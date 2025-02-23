@@ -11,16 +11,14 @@ import Comment from '@/components/blogs/comment';
 import Board from '@/components/blogs/board';
 import type { Metadata } from 'next';
 
-interface BlogProps {
-  id: string;
+interface PageProps {
+  params: { id: string };
 }
 
 //ページのメタデータを動的に生成(headの設定)
 export async function generateMetadata({
   params,
-}: {
-  params: BlogProps;
-}): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const allBlogsData = await getMdsData();
   const blogData = getMdData(allBlogsData, params.id).shift();
   const convertedBlogData = await getHtmlContent(blogData);
@@ -33,7 +31,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Blog({ params }: { params: BlogProps }) {
+export default async function Blog({ params }: { params: PageProps }) {
   const { id } = params;
   const allBlogsData = await getMdsData();
   const blogData = getMdData(allBlogsData, params.id).shift();
