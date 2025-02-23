@@ -1,0 +1,95 @@
+@tailwind components;
+@tailwind utilities;
+
+/**************************************************
+ * General
+ **************************************************/
+@layer components {
+  .md-html a {
+    @apply text-blue-600;
+  }
+  .md-html p {
+    @apply whitespace-pre-wrap;
+  }
+  .md-html ul {
+    @apply pl-5;
+  }
+  .md-html ol {
+    @apply pl-5;
+  }
+  .md-html ul li {
+    @apply list-disc;
+  }
+  .md-html ol li {
+    @apply list-decimal;
+  }
+  .md-html table {
+    @apply mx-auto my-6 border-collapse break-normal leading-normal;
+  }
+  .md-html th {
+    @apply border bg-blue-200 p-2 font-bold;
+  }
+  .md-html td {
+    @apply border p-2;
+  }
+  .md-html blockquote {
+    @apply mx-auto my-6 border-t-2 border-blue-200 pb-1 pl-3 pt-1 text-sm;
+  }
+
+  .md-html .md-message {
+    @apply m-4 rounded-md border-l-4 border-blue-200 bg-green-50 p-2;
+  }
+}
+
+/**************************************************
+ * Code blocks and Inline code
+ **************************************************/
+pre,
+code[class*='language-'] {
+  @apply whitespace-pre break-normal text-left font-mono text-sm leading-relaxed text-gray-300;
+  tab-size: 4; /* Tailwindがサポートしていないため直接記述 */
+}
+
+/* Selection styles */
+pre::selection,
+code[class*='language-']::selection {
+  @apply bg-gray-700 text-gray-100;
+}
+
+/* Print styles */
+@media print {
+  pre,
+  code[class*='language-'] {
+    @apply shadow-none;
+  }
+}
+
+/* Pre block styles */
+@layer components {
+  pre {
+    @apply my-4 overflow-auto rounded-lg bg-gray-800 p-6 shadow-lg;
+  }
+}
+
+/* Inline code styles */
+@layer components {
+  :not(pre) > code {
+    @apply mx-1 break-words rounded bg-gray-200 px-2 py-1 text-xs font-bold text-red-600 shadow-inner;
+  }
+}
+
+/*********************************************************
+  * Line highlighting
+  *********************************************************/
+@layer components {
+  pre[data-line] {
+    @apply relative;
+  }
+  pre > code[class*='language-'] {
+    @apply relative z-10;
+  }
+  .line-highlight {
+    @apply pointer-events-none absolute left-0 right-0 z-0 mt-4 whitespace-pre bg-gray-700 px-0 leading-relaxed shadow-inner;
+    box-shadow: inset 5px 0 0 #61afef;
+  }
+}
