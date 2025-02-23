@@ -1,4 +1,3 @@
-import Ad from './ad';
 import Footer from './footer';
 import About from './about';
 import { blog } from '@/contents/blog';
