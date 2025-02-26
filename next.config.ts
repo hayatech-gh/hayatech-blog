@@ -1,4 +1,4 @@
-import { NextConfig } from "next";
+import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   // images: {
@@ -7,18 +7,10 @@ const nextConfig: NextConfig = {
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      prismjs: require.resolve("prismjs"), // 明示的にパスを解決
+      prismjs: require.resolve('prismjs'), // 明示的にパスを解決
     };
     return config;
   },
 };
 
 export default nextConfig;
-
-// import type { NextConfig } from "next";
-
-// const nextConfig: NextConfig = {
-//   /* config options here */
-// };
-
-// export default nextConfig;

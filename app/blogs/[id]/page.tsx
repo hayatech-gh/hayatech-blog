@@ -31,7 +31,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Blog({ params }: { params: PageProps }) {
+export default async function Blog({ params }: PageProps) {
   const { id } = params;
   const allBlogsData = await getMdsData();
   const blogData = getMdData(allBlogsData, params.id).shift();
@@ -103,12 +103,10 @@ export default async function Blog({ params }: { params: PageProps }) {
 
 /*
 SSGでビルド時に事前レンダリング
-ISRで、定期的にページを再生成し、データを更新・反映
 */
 export const generateStaticParams = async () => {
   const allBlogsData = await getMdsData();
   return allBlogsData.map((blog) => ({
-    id: blog.id,
-    revalidate: 60, // 60秒ごとに再生成 ISR (Incremental Static Regeneration)の設定
+    params: { id: blog.id },
   }));
 };
