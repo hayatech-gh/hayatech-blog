@@ -10,6 +10,7 @@ import Like from '@/components/blogs/like';
 import Comment from '@/components/blogs/comment';
 import Board from '@/components/blogs/board';
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 interface PageProps {
   params: { id: string };
@@ -19,8 +20,12 @@ interface PageProps {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  if (id === 'favicon.ico') {
+    return {}; // 空のメタデータを返す
+  }
   const allBlogsData = await getMdsData();
-  const blogData = getMdData(allBlogsData, params.id).shift();
+  const blogData = getMdData(allBlogsData, id).shift();
   const convertedBlogData = await getHtmlContent(blogData);
 
   const hayaTechBlog = 'HayaTech-Blog(はやてくぶろぐ)';
@@ -32,12 +37,16 @@ export async function generateMetadata({
 }
 
 export default async function Blog({ params }: PageProps) {
-  const { id } = params;
+  const { id } = await params;
   const allBlogsData = await getMdsData();
-  const blogData = getMdData(allBlogsData, params.id).shift();
-  if (!blogData) {
-    throw new Error(`Blog not found for id: ${id}`);
+  const blogData = getMdData(allBlogsData, await id).shift();
+  // if (!blogData) {
+  //   throw new Error(`Blog not found for id: ${id}`);
+  // }
+  if (id === 'favicon.ico' || !blogData) {
+    return notFound(); // Next.jsの404ページを表示
   }
+
   const convertedBlogData = await getHtmlContent(blogData);
 
   return (
@@ -88,13 +97,13 @@ export default async function Blog({ params }: PageProps) {
             id={convertedBlogData.id}
             topics={convertedBlogData.topics}
           />
-          <Like blogId={params.id} />
+          <Like blogId={await id} />
         </div>
 
         {/* コメント投稿・掲示板 */}
         <div className="container mx-auto rounded-lg bg-white p-6 shadow-lg">
-          <Comment blogId={params.id} />
-          <Board blogId={params.id} />
+          <Comment blogId={await id} />
+          <Board blogId={await id} />
         </div>
       </article>
     </Layout>
@@ -107,6 +116,6 @@ SSGでビルド時に事前レンダリング
 export const generateStaticParams = async () => {
   const allBlogsData = await getMdsData();
   return allBlogsData.map((blog) => ({
-    params: { id: blog.id },
+    id: blog.id,
   }));
 };

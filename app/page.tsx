@@ -32,7 +32,11 @@ export default async function Home({ searchParams }: HomeProps) {
   (currentPage - 1) * pageLimit で開始インデックスを算出
   currentPage * pageLimit で終了インデックスを算出
   */
-  const currentPage = searchParams.page ? parseInt(searchParams.page, 10) : 1;
+  const params = new URLSearchParams(
+    searchParams ? searchParams.toString() : '',
+  );
+  const pageParam = params.get('page');
+  const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
   const totalBlogs = sortedMdData.length;
   const totalPages = Math.ceil(totalBlogs / pageLimit);
   const paginatedBlogs = sortedMdData.slice(
