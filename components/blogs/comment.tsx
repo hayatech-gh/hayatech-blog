@@ -46,9 +46,13 @@ const Comment = ({ blogId }: CommentProps) => {
       alert('コメントが送信されました！');
       setName('');
       setContent('');
-    } catch (error) {
+    } catch (error: unknown) {
       // setError(error.message || 'エラーが発生しました。');
-      alert('エラーが発生しました: ' + error.message);
+      if (error instanceof Error) {
+        alert('エラーが発生しました: ' + error.message);
+      } else {
+        alert('エラーが発生しました。');
+      }
     } finally {
       setLoading(false);
     }

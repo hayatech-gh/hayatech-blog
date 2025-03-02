@@ -1,4 +1,5 @@
 import { Config } from 'tailwindcss';
+import typography from '@tailwindcss/typography';
 
 const config: Config = {
   content: [
@@ -28,7 +29,7 @@ const config: Config = {
     'plugin:tailwindcss/recommended',
     'prettier',
   ],
-  plugins: ['@typescript-eslint', 'tailwindcss'],
+  plugins: [typography],
   parser: '@typescript-eslint/parser',
   rules: {
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],

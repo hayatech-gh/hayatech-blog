@@ -1,3 +1,4 @@
+// app/blogs/[id]/page.tsx
 import Layout from '@/components/common/layout/layout';
 import { getMdsData, getHtmlContent, getMdData } from '@/lib/mdData';
 import Date from '@/components/common/date';
@@ -12,39 +13,20 @@ import Board from '@/components/blogs/board';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-interface PageProps {
-  params: { id: string };
-}
+type BlogProps = {
+  params: Promise<{ id: string }>;
+};
 
-//ページのメタデータを動的に生成(headの設定)
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const { id } = await params;
-  if (id === 'favicon.ico') {
-    return {}; // 空のメタデータを返す
-  }
-  const allBlogsData = await getMdsData();
-  const blogData = getMdData(allBlogsData, id).shift();
-  const convertedBlogData = await getHtmlContent(blogData);
-
-  const hayaTechBlog = 'HayaTech-Blog(はやてくぶろぐ)';
-
-  return {
-    title: `${convertedBlogData.title} ${hayaTechBlog}`,
-    robots: 'noindex',
-  };
-}
-
-export default async function Blog({ params }: PageProps) {
+export default async function Blog({ params }: BlogProps) {
   const { id } = await params;
   const allBlogsData = await getMdsData();
-  const blogData = getMdData(allBlogsData, await id).shift();
-  // if (!blogData) {
-  //   throw new Error(`Blog not found for id: ${id}`);
-  // }
-  if (id === 'favicon.ico' || !blogData) {
-    return notFound(); // Next.jsの404ページを表示
+
+  let blogData;
+  try {
+    blogData = getMdData(allBlogsData, id);
+  } catch (error) {
+    console.error(error);
+    return notFound();
   }
 
   const convertedBlogData = await getHtmlContent(blogData);
@@ -97,25 +79,48 @@ export default async function Blog({ params }: PageProps) {
             id={convertedBlogData.id}
             topics={convertedBlogData.topics}
           />
-          <Like blogId={await id} />
+          <Like blogId={id} />
         </div>
 
         {/* コメント投稿・掲示板 */}
         <div className="container mx-auto rounded-lg bg-white p-6 shadow-lg">
-          <Comment blogId={await id} />
-          <Board blogId={await id} />
+          <Comment blogId={id} />
+          <Board blogId={id} />
         </div>
       </article>
     </Layout>
   );
 }
 
+//ページのメタデータを動的に生成(headの設定)
+export async function generateMetadata({
+  params,
+}: BlogProps): Promise<Metadata> {
+  const { id } = await params;
+  const allBlogsData = await getMdsData();
+  const blogData = getMdData(allBlogsData, id);
+  if (!blogData) {
+    throw new Error(`Blog not found for id: ${id}`);
+  }
+  const convertedBlogData = await getHtmlContent(blogData);
+
+  const hayaTechBlog = 'HayaTech-Blog(はやてくぶろぐ)';
+
+  return {
+    title: `${convertedBlogData.title} ${hayaTechBlog}`,
+    robots: 'noindex',
+  };
+}
+
 /*
 SSGでビルド時に事前レンダリング
+ISRで、定期的にページを再生成し、データを更新・反映
 */
-export const generateStaticParams = async () => {
+export const generateStaticParams = async (): Promise<
+  Array<{ params: { id: string } }>
+> => {
   const allBlogsData = await getMdsData();
   return allBlogsData.map((blog) => ({
-    id: blog.id,
+    params: { id: blog.id },
   }));
 };

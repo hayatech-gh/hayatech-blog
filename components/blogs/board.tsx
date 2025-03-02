@@ -7,8 +7,15 @@ interface BoardProps {
   blogId: string;
 }
 
+interface Comment {
+  id: string;
+  name: string;
+  content: string;
+  created_at: string;
+}
+
 const Board = ({ blogId }: BoardProps) => {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -39,7 +46,7 @@ const Board = ({ blogId }: BoardProps) => {
           filter: `blog_id=eq.${blogId}`,
         },
         (payload) => {
-          setComments((prev) => [payload.new, ...prev]);
+          setComments((prev) => [payload.new as Comment, ...prev]);
         },
       )
       .subscribe();

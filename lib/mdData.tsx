@@ -3,19 +3,16 @@ import { Article } from '../types/article';
 import { fetchGithubMakeArticle } from './utility/getArticle';
 import { fetchGithubRepo } from './utility/getArticle';
 
-export async function getMdsData() {
-  // GitHub APIを使用して記事一覧を取得
+export async function getMdsData(): Promise<Article[]> {
   const zennArticles: ArticleResponse[] = await fetchGithubRepo(
     'https://api.github.com/repos/hayatech-gh/zenn-content/contents/articles',
   );
 
-  // API呼び出しが失敗した場合またはzennArticlesが配列型でない場合のエラー処理
   if (!zennArticles || !Array.isArray(zennArticles)) {
     console.error('Failed to fetch Zenn articles. Response:', zennArticles);
-    return []; // 空配列を返して配列操作（mapやfilter）でのエラー防止
+    return []; // 空配列を返す
   }
 
-  // 各記事の詳細データを取得
   const datas = await Promise.all(
     zennArticles.map(async (article: ArticleResponse) => {
       try {
@@ -24,15 +21,17 @@ export async function getMdsData() {
           article.name,
         );
       } catch (error) {
-        console.error(`Failed to fetch article: ${article.name}`, error);
-        return null; // 失敗時に null を返す
+        console.error(
+          `Failed to fetch article: ${article.name}, error:`,
+          error,
+        );
+        return null;
       }
     }),
   );
 
-  // 無効なデータを除外し、有効なデータのみ返す
-  const validDatas = (datas || []).filter(Boolean);
-  return validDatas;
+  // null や undefined を除外
+  return datas.filter(Boolean) as Article[];
 }
 
 //渡された記事データを日付順に並び替え
@@ -63,13 +62,12 @@ export function getAllMdIds(articles: Article[]) {
 }
 
 //指定された記事IDに対応する記事データを取得
-export function getMdData(articles: Article[], id: string) {
-  //記事データからidが一致する記事をフィルタリングして返す
-  return articles.filter((article: Article) => {
-    if (article.id === id) {
-      return article;
-    }
-  });
+export function getMdData(articles: Article[], id: string): Article {
+  const foundArticle = articles.find((article) => article.id === id);
+  if (!foundArticle) {
+    throw new Error(`Article with ID ${id} not found`);
+  }
+  return foundArticle;
 }
 
 /*
@@ -109,22 +107,34 @@ export async function getHtmlContent(article: Article) {
   };
 }
 
-// カスタムブロック（:::message など）を変換する関数
+interface ContainerDirectiveNode extends Node {
+  type: 'containerDirective';
+  name: string;
+}
+
+interface Data {
+  hName?: string;
+  hProperties?: Record<string, unknown>;
+}
+
+// カスタムブロック（:::message など）を変換
 function customDirectives() {
   return (tree: Node) => {
     visit(tree, (node) => {
       if (node.type === 'containerDirective') {
-        const data = node.data || (node.data = {});
-        const tagName = node.name === 'message' ? 'div' : 'section';
+        const containerNode = node as ContainerDirectiveNode;
+        const tagName = containerNode.name === 'message' ? 'div' : 'section';
 
+        // node.dataの型をDataにキャスト
+        const data = (node.data as Data) || (node.data = {} as Data);
         data.hName = tagName;
-        data.hProperties = { className: `md-${node.name}` };
+        data.hProperties = { className: `md-${containerNode.name}` };
       }
     });
   };
 }
 
-// Zenn Markdown の独自記法を変換する
+// Zenn Markdown の独自記法を変換
 function transformZennMd(markdown: string): string {
   return markdown
     .replace(

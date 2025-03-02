@@ -78,7 +78,7 @@ const MailShare = ({ websiteName, websiteUrl, title, id }: MailShareProps) => {
                     href={service.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center rounded-lg p-3 shadow-md transition hover:shadow-lg ${service.color} text-black`}
+                    className="flex items-center rounded-lg p-3 text-black shadow-md transition hover:shadow-lg"
                   >
                     {service.icon}
                     <span className="ml-3 text-xl font-medium">

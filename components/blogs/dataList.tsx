@@ -6,7 +6,7 @@ import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 
 interface DataListProps {
   type: string;
-  topics: string;
+  topics: string[];
   date: string;
 }
 

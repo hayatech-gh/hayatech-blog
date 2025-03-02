@@ -12,31 +12,18 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
 const pageLimit = 10;
 
-interface HomeProps {
-  searchParams: Record<string, string | string[] | undefined>;
-}
+type HomeProps = {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 export default async function Home({ searchParams }: HomeProps) {
   const allMdsData = await getMdsData();
   const sortedMdData = await getSortedMdsData(allMdsData);
 
-  /*
-  *ページネーション
-  page が存在すれば parseInt() で整数に変換（10進数指定）
-  存在しなければ、デフォルト値として 1 を設定（最初のページ）
-  totalBlogsで総記事数を取得
-  totalPagesで総ページ数を計算 ex) 25articles => 25/10 = 2page
-  paginatedBlogsで表示する記事を抽出 
-  ex) currentPage=2 => start=(2-1)*10=10, end=2*10=20 => extract 10~19articles
-  slice(start, end) を使用して、現在のページに対応する記事を抽出
-  (currentPage - 1) * pageLimit で開始インデックスを算出
-  currentPage * pageLimit で終了インデックスを算出
-  */
-  const params = new URLSearchParams(
-    searchParams ? searchParams.toString() : '',
-  );
-  const pageParam = params.get('page');
-  const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
+  const params = (await searchParams) ?? {};
+  const currentPage = params.page
+    ? parseInt(Array.isArray(params.page) ? params.page[0] : params.page, 10)
+    : 1;
   const totalBlogs = sortedMdData.length;
   const totalPages = Math.ceil(totalBlogs / pageLimit);
   const paginatedBlogs = sortedMdData.slice(
@@ -47,7 +34,6 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <Layout>
       <article className="mx-auto p-4">
-        {/* 記事一覧 */}
         <ul className="mx-auto grid gap-4 sm:grid-cols-1 md:grid-cols-2">
           {paginatedBlogs.map(({ id, title, emoji, date, topics, type }) => (
             <li
@@ -110,7 +96,6 @@ export default async function Home({ searchParams }: HomeProps) {
           ))}
         </ul>
 
-        {/* ページネーション */}
         <div className="mt-8 flex justify-center space-x-4">
           {currentPage > 1 && (
             <Link
@@ -136,3 +121,26 @@ export default async function Home({ searchParams }: HomeProps) {
     </Layout>
   );
 }
+
+// export const generateStaticParams = async () => {
+//   const allMdsData = await getMdsData();
+//   const sortedMdData = await getSortedMdsData(allMdsData);
+//   const totalBlogs = sortedMdData.length;
+//   const totalPages = Math.ceil(totalBlogs / pageLimit);
+
+//   const params = [];
+//   for (let i = 1; i <= totalPages; i++) {
+//     params.push({
+//       page: i.toString(),
+//     });
+//   }
+
+//   return params;
+// };
+
+// export const generateMetadata = () => {
+//   return {
+//     title: 'Home',
+//     description: 'Welcome to the blog!',
+//   };
+// };
