@@ -9,9 +9,9 @@ const hayaTechBlog = 'HayaTech-Blog';
 export const metadata: Metadata = {
   title: 'HayaTech-Blog(はやてくぶろぐ)',
   description:
-    'HayaTech-Blogでは、エンジニアのための情報共有コミュニティであるに投稿している記事を取得して、エンジニア向けのブログとして公開しています。',
+    'HayaTech-Blogでは、エンジニアのための情報共有コミュニティであるZENNに投稿している記事を取得して、エンジニア向けのブログとして公開しています。',
   keywords:
-    'Next.js, React, TypeScript, JavaScript, Python, HTML, CSS, Web Development, Engineer, Blog, Idea, Tech',
+    'Next.js, React, TypeScript, JavaScript, Python, PHP, SQL, HTML, CSS, Web Development, Engineer, Blog, Idea, Tech',
   authors: [{ name: 'Hayate', url: 'https://hayatech-blog.vercel.app/' }],
   icons: {
     icon: './favicon.ico',
@@ -19,14 +19,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'HayaTech-Blog(はやてくぶろぐ)',
     description:
-      'HayaTech-Blogでは、エンジニアのための情報共有コミュニティであるに投稿している記事を取得して、エンジニア向けのブログとして公開しています。',
+      'HayaTech-Blogでは、エンジニアのための情報共有コミュニティであるZENNに投稿している記事を取得して、エンジニア向けのブログとして公開しています。',
     url: 'https://hayatech-blog.vercel.app',
     siteName: 'HayaTech-Blog(はやてくぶろぐ)',
     images: [
       {
-        url: `https://og-image.vercel.app/${encodeURI(
-          hayaTechBlog,
-        )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`,
+        url: `https://og-image.vercel.app/HayaTech.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`,
         alt: 'HayaTech-Blog(はやてくぶろぐ)',
       },
     ],

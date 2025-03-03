@@ -121,26 +121,3 @@ export default async function Home({ searchParams }: HomeProps) {
     </Layout>
   );
 }
-
-// export const generateStaticParams = async () => {
-//   const allMdsData = await getMdsData();
-//   const sortedMdData = await getSortedMdsData(allMdsData);
-//   const totalBlogs = sortedMdData.length;
-//   const totalPages = Math.ceil(totalBlogs / pageLimit);
-
-//   const params = [];
-//   for (let i = 1; i <= totalPages; i++) {
-//     params.push({
-//       page: i.toString(),
-//     });
-//   }
-
-//   return params;
-// };
-
-// export const generateMetadata = () => {
-//   return {
-//     title: 'Home',
-//     description: 'Welcome to the blog!',
-//   };
-// };

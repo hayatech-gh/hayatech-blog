@@ -114,7 +114,6 @@ export async function generateMetadata({
 
 /*
 SSGでビルド時に事前レンダリング
-ISRで、定期的にページを再生成し、データを更新・反映
 */
 export const generateStaticParams = async (): Promise<
   Array<{ params: { id: string } }>

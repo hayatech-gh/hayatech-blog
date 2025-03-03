@@ -8,7 +8,7 @@ const Footer = () => {
         <nav className="m-2 mt-0">
           <Link
             href="/"
-            className="flex items-center justify-center gap-2 rounded-lg p-2 text-gray-700 transition-all duration-300 hover:bg-slate-100 hover:text-blue-600"
+            className="flex items-center justify-center gap-2 rounded-lg p-2 text-gray-700 transition-all duration-300 ease-in-out hover:bg-slate-100 hover:text-blue-600"
           >
             <Image
               src="/images/HayaTech_logo.png"

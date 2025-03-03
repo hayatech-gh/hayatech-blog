@@ -1,5 +1,5 @@
 //Markdownのメタデータを解析
-import matter from "gray-matter";
+import matter from 'gray-matter';
 
 //指定されたURLからGitHubリポジトリのデータを取得
 export async function fetchGithubRepo(url: string) {
@@ -27,31 +27,15 @@ export async function fetchGithubMakeArticle(url: string, fileName: string) {
       throw `ステータスコードエラー：${res.status}`;
     } else {
       const data = await res.json();
-      const buffer = Buffer.from(data.content, "base64");
-      const fileContents = buffer.toString("utf-8");
+      const buffer = Buffer.from(data.content, 'base64');
+      const fileContents = buffer.toString('utf-8');
       const matterResult = matter(fileContents);
       if (!matterResult.data.published) {
         return;
       }
 
-      // if (matterResult.data.qiitaId) {
-      //   return {
-      //     id: fileName.replace(/\.md$/, ""),
-      //     ...(matterResult.data as {
-      //       title: string;
-      //       emoji: string;
-      //       type: string;
-      //       topics: string[];
-      //       published: boolean;
-      //       date: string;
-      //     }),
-      //     content: matterResult.content,
-      //     from: "Qiita",
-      //   };
-      // }
-
       return {
-        id: fileName.replace(/\.md$/, ""),
+        id: fileName.replace(/\.md$/, ''),
         ...(matterResult.data as {
           title: string;
           emoji: string;
@@ -61,7 +45,7 @@ export async function fetchGithubMakeArticle(url: string, fileName: string) {
           date: string;
         }),
         content: matterResult.content,
-        from: "Zenn",
+        from: 'Zenn',
       };
     }
   } catch (err) {

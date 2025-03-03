@@ -15,19 +15,21 @@ const Layout = ({ children }: LayoutProps) => {
         <main className="col-span-1 rounded-xl bg-slate-100 xl:col-span-3">
           <div className="mx-auto mb-10 max-w-lg">
             <Link href="/">
-              <div className="group flex items-center justify-center gap-2 border-b-4 border-slate-300">
-                <div className="">
+              <div className="flex items-center justify-center gap-2 border-b-4 border-slate-300 transition duration-300 hover:opacity-50">
+                <div>
                   <Image
                     src="/images/HayaTech_logo.png"
                     alt="HayaTech-Blog"
                     width={128}
                     height={128}
-                    className="h-10 w-10 mix-blend-normal transition duration-300 group-hover:mix-blend-difference"
+                    className="h-10 w-10"
                   />
                 </div>
-                <h1 className="text-2xl font-bold tracking-widest sm:text-3xl md:text-4xl">
-                  {blog.title}
-                </h1>
+                <div>
+                  <h1 className="text-2xl font-bold tracking-widest sm:text-3xl md:text-4xl">
+                    {blog.title}
+                  </h1>
+                </div>
               </div>
             </Link>
             <p className="mt-4 text-center font-semibold md:text-lg">
