@@ -17,6 +17,8 @@
     "@supabase/supabase-js": "^2.47.12",
     "@tailwindcss/typography": "^0.5.16",
     "@types/google.analytics": "^0.0.41",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "date-fns": "^2.30.0",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
