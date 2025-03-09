@@ -33,13 +33,14 @@ const Layout = ({ children }: LayoutProps) => {
               </div>
             </Link>
 
-            <span className="inline-block w-full rounded-lg border-4 border-slate-300"></span>
+            <div className="w-full rounded-lg border-t-4 border-slate-300"></div>
 
             <p className="mt-4 text-center font-semibold md:text-lg">
               {blog.titleSub}
             </p>
           </div>
 
+          {/* コンテンツ */}
           {children}
         </main>
         <aside className="xl:col-span-1">
