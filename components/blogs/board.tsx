@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase } from '@/lib/utility/supabase';
+import { supabase } from '@/lib/supabase';
 
 interface BoardProps {
   blogId: string;

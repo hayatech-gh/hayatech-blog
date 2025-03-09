@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { supabase } from '@/lib/utility/supabase';
+import { supabase } from '@/lib/supabase';
 
 interface CommentProps {
   blogId: string;
