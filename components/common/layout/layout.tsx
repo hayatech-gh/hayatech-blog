@@ -15,7 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
         <main className="col-span-1 rounded-xl bg-slate-100 xl:col-span-3">
           <div className="mx-auto mb-10 max-w-lg">
             <Link href="/">
-              <div className="flex items-center justify-center gap-2 border-b-4 border-slate-300 transition duration-300 hover:opacity-50">
+              <div className="flex items-center justify-center gap-2 transition duration-300 hover:opacity-50">
                 <div>
                   <Image
                     src="/images/HayaTech_logo.png"
@@ -32,6 +32,9 @@ const Layout = ({ children }: LayoutProps) => {
                 </div>
               </div>
             </Link>
+
+            <span className="inline-block w-full rounded-lg border-4 border-slate-300"></span>
+
             <p className="mt-4 text-center font-semibold md:text-lg">
               {blog.titleSub}
             </p>

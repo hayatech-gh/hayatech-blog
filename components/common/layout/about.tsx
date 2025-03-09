@@ -13,7 +13,6 @@ export default function About() {
         <p className="leading-relaxed text-gray-800">{about.descriptionBlog}</p>
       </section>
       <section className="mt-4">
-        {/* <h2 className="text-left text-xl tracking-wider"> */}
         <h2 className="mb-4 border-b-4 border-slate-300 pb-2 text-xl tracking-wider text-gray-900">
           {about.headingAuthor}
         </h2>
@@ -67,7 +66,7 @@ export default function About() {
         <h3 className="mb-2 border-b-4 border-slate-300 pb-2 text-xl tracking-wider text-gray-900">
           {about.headingDevLang}
         </h3>
-        <ul className="grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-3">
+        <ul className="grid grid-cols-2 gap-1 sm:grid-cols-2 md:grid-cols-2">
           {about.skills.map((skill: React.ReactNode, index: number) => (
             <li
               key={index}
