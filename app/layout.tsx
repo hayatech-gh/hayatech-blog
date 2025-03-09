@@ -15,12 +15,12 @@ export const metadata: Metadata = {
   authors: [{ name: 'Hayate', url: 'https://hayatech-blog.vercel.app' }],
   icons: {
     icon: './favicon.ico',
-    shortcut: '/public/images/HayaTech.png',
-    apple: '/public/images/HayaTech.png',
+    shortcut: '/images/HayaTech.png',
+    apple: '/images/HayaTech.png',
     other: [
       {
         rel: 'android-chrome',
-        url: '/public/images/HayaTech.png',
+        url: '/images/HayaTech.png',
       },
     ],
   },
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: hayaTechBlog,
     images: [
       {
-        url: 'https://og-image.vercel.app/HayaTech.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg',
+        url: 'https://og-image.vercel.app/images/HayaTech.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg',
         alt: hayaTechBlog,
       },
     ],
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: hayaTechBlog,
     images: [
-      'https://og-image.vercel.app/HayaTech.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg',
+      'https://og-image.vercel.app/images/HayaTech.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg',
     ],
   },
 };
