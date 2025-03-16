@@ -1,3 +1,4 @@
+/* app/page.tsx */
 import { getMdsData, getSortedMdsData } from '@/lib/mdData';
 import { isNew } from '@/lib/utility/isNew';
 import Layout from '@/components/common/layout/layout';
@@ -33,7 +34,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <Layout>
-      <article className="mx-auto p-4">
+      <article className="mx-auto p-2">
         <ul className="mx-auto grid gap-4 sm:grid-cols-1 md:grid-cols-2">
           {paginatedBlogs.map(({ id, title, emoji, date, topics, type }) => (
             <li
@@ -69,19 +70,19 @@ export default async function Home({ searchParams }: HomeProps) {
                     <h2 className="truncate-title">{title}</h2>
                   </div>
                   <ul className="mt-auto border border-b-0 border-l-0 border-r-0 border-slate-300 p-2">
-                    <li className="my-2 flex items-center space-x-2">
+                    <li className="my-2 flex items-center space-x-1">
                       <span>
                         <CategoryIcon />
                       </span>
-                      <span>{type}</span>
+                      <span>{type == 'tech' ? 'Tech' : 'Idea'}</span>
                     </li>
-                    <li className="my-2 flex items-center space-x-2">
+                    <li className="my-2 flex items-center space-x-1">
                       <span>
                         <TagIcon />
                       </span>
                       <Topics topicList={topics} />
                     </li>
-                    <li className="my-2 flex items-center space-x-2">
+                    <li className="my-2 flex items-center space-x-1">
                       <span>
                         <HistoryEduIcon />
                       </span>

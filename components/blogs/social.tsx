@@ -15,9 +15,9 @@ interface SocialProps {
 const Social = ({ title, id, topics }: SocialProps) => {
   return (
     <>
-      <div className="flex max-w-sm flex-wrap justify-between">
+      <div className="flex flex-wrap justify-start gap-1">
         {/* X（旧ツイッター）で共有 */}
-        <button className="mb-1 mr-1 flex h-12 w-12 items-center justify-center rounded-lg bg-white p-3 shadow-lg transition duration-300 hover:bg-slate-100 sm:mb-0 md:h-14 md:w-14">
+        <button className="flex h-12 w-12 items-center justify-center rounded-lg bg-white p-3 shadow-lg transition duration-300 hover:bg-slate-100 sm:mb-0 md:h-14 md:w-14">
           <a
             href={`https://x.com/share?text=${encodeURIComponent(`${websiteName} ${title}`)}&hashtags=${topics}&url=${websiteUrl}blogs/${id}`}
             target="_blank"
@@ -27,7 +27,7 @@ const Social = ({ title, id, topics }: SocialProps) => {
           </a>
         </button>
         {/* Facebookで共有 */}
-        <button className="mb-1 mr-1 flex h-12 w-12 items-center justify-center rounded-lg bg-white p-3 shadow-lg transition duration-300 hover:bg-slate-100 sm:mb-0 md:h-14 md:w-14">
+        <button className="flex h-12 w-12 items-center justify-center rounded-lg bg-white p-3 shadow-lg transition duration-300 hover:bg-slate-100 sm:mb-0 md:h-14 md:w-14">
           <a
             href={`http://www.facebook.com/share.php?u=${websiteUrl}blogs/${id}`}
           >
@@ -35,7 +35,7 @@ const Social = ({ title, id, topics }: SocialProps) => {
           </a>
         </button>
         {/* Lineで共有 */}
-        <button className="mb-1 mr-1 flex h-12 w-12 items-center justify-center rounded-lg bg-white p-3 shadow-lg transition duration-300 hover:bg-slate-100 sm:mb-0 md:h-14 md:w-14">
+        <button className="flex h-12 w-12 items-center justify-center rounded-lg bg-white p-3 shadow-lg transition duration-300 hover:bg-slate-100 sm:mb-0 md:h-14 md:w-14">
           <a
             href={`https://social-plugins.line.me/lineit/share?url=${websiteUrl}blogs/${id}`}
             target="_blank"

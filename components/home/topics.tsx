@@ -10,9 +10,10 @@ interface TopicsProps {
 const Topics = ({ topicList }: TopicsProps) => {
   return (
     <>
-      {topicList.map((topic) => (
-        <span className="mr-1" key={topic}>
+      {topicList.map((topic, index) => (
+        <span key={topic}>
           {topic}
+          {index !== topicList.length - 1 && ','}
         </span>
       ))}
     </>

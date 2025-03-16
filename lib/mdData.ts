@@ -72,35 +72,46 @@ export function getMdData(articles: Article[], id: string): Article {
 
 /*
 [Remarkプラグイン]
-remark-math: 数式を解析
-remark-html-katex: 数式をHTML形式に変換
-remark-prism: シンタックスハイライトを適用
-remark-gfm: GitHub Flavored Markdownの拡張を有効化
-remark-html: HTML文字列に変換
+remarkParse：Markdownをmdast（Markdown 抽象構文木）に変換
+remarkMath：数式記法（LaTeX）を解析
+remarkDirective：::: を使ったカスタムディレクティブを解析
+remarkGfm：GitHub Flavored Markdownの拡張を有効化
+remarkRehype：mdast（Markdown 抽象構文木）をhast（HTML 抽象構文木）に変換
+rehypeRaw：Markdown 内のrawHTMLを安全に処理
+rehypeKatex：remarkMathで処理された数式をKaTeXを使ってレンダリング
+rehypeHighlight：コードブロックのシンタックスハイライトを適用
+rehypeStringify：hast（HTML 抽象構文木）を HTML の文字列に変換
 */
 
-import { remark } from 'remark';
-import remarkHtml from 'remark-html';
-import htmlKatex from 'remark-html-katex';
-import gfm from 'remark-gfm';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkMath from 'remark-math';
 import remarkDirective from 'remark-directive';
+import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
+import rehypeRaw from 'rehype-raw';
+import rehypeKatex from 'rehype-katex';
 import rehypeHighlight from 'rehype-highlight';
-import math from 'remark-math';
+import rehypeStringify from 'rehype-stringify';
+import type { Plugin } from 'unified';
 import { Node } from 'unist';
 import { visit } from 'unist-util-visit';
 
 export async function getHtmlContent(article: Article) {
-  const processedContent = await remark()
-    .use(math)
-    .use(htmlKatex)
+  const unifiedContent = await unified()
+    .use(remarkParse)
+    .use(remarkMath)
     .use(remarkDirective)
-    .use(customDirectives) // カスタムブロックをHTMLに変換する処理
-    .use(gfm)
-    .use(remarkHtml, { sanitize: false })
+    .use(customDirectives)
+    .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeKatex)
     .use(rehypeHighlight)
+    .use(rehypeStringify as unknown as Plugin)
     .process(transformZennMd(article.content));
 
-  const contentHtml = processedContent.toString();
+  const contentHtml = unifiedContent.toString();
   return {
     ...article,
     content: contentHtml,

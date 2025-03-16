@@ -30,11 +30,11 @@ export const about = {
   githubID: 'hayatech-gh',
   githubURL: 'https://github.com/hayatech-gh',
   descriptionAuthor:
-    '「HayaTech」と申します。自分の名前とテクノロジーを合わせたニックネームです。社会人経験3年の20代エンジニアで、今現在は主にWeb系の開発に携わっています。',
+    '「HayaTech」と申します。自分の名前とテクノロジーを合わせたニックネームです。大学卒業後、仕事でWeb制作を経験し、今現在はWeb系の開発に携わっています。',
   headingCareer: '経歴',
   careers: [
     '青山学院大学 社会情報学部 社会情報学科 学士卒',
-    '社会人3年（Webクリエイター、Webエンジニア）',
+    'Webクリエイター＆Webエンジニア 3年',
   ],
   headingDevLang: '使用言語',
   skills: [

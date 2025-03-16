@@ -1,4 +1,4 @@
-// app/blogs/[id]/page.tsx
+/* app/blogs/[id]/page.tsx */
 import Layout from '@/components/common/layout/layout';
 import { getMdsData, getHtmlContent, getMdData } from '@/lib/mdData';
 import Date from '@/components/common/date';
@@ -33,7 +33,7 @@ export default async function Blog({ params }: BlogProps) {
 
   return (
     <Layout>
-      <article className="mx-auto p-4">
+      <article className="mx-auto p-2">
         {/* ブログヘッダー */}
         <div
           className={`${
@@ -43,19 +43,19 @@ export default async function Blog({ params }: BlogProps) {
           <div className="text-8xl">{convertedBlogData.emoji}</div>
         </div>
         <ul className="flex flex-wrap justify-start space-x-0 p-2 sm:space-x-4">
-          <li className="flex items-center space-x-2">
+          <li className="flex items-center space-x-1">
             <span>
               <CategoryIcon />
             </span>
             <span>{convertedBlogData.type}</span>
           </li>
-          <li className="flex items-center space-x-2">
+          <li className="flex items-center space-x-1">
             <span>
               <TagIcon />
             </span>
             <Topics topicList={convertedBlogData.topics} />
           </li>
-          <li className="flex items-center space-x-2">
+          <li className="flex items-center space-x-1">
             <span>
               <HistoryEduIcon />
             </span>
@@ -73,17 +73,22 @@ export default async function Blog({ params }: BlogProps) {
         </div>
 
         {/* 共有・お気に入り */}
-        <div className="flex justify-between p-4">
-          <Social
-            title={convertedBlogData.title}
-            id={convertedBlogData.id}
-            topics={convertedBlogData.topics}
-          />
-          <Like blogId={id} />
+        <div className="my-4">
+          {/* <div className="mx-2 my-4 flex flex-col justify-between sm:flex-row"> */}
+          <div className="mb-2 flex justify-end">
+            <Like blogId={id} />
+          </div>
+          <div className="flex justify-start">
+            <Social
+              title={convertedBlogData.title}
+              id={convertedBlogData.id}
+              topics={convertedBlogData.topics}
+            />
+          </div>
         </div>
 
         {/* コメント投稿・掲示板 */}
-        <div className="container mx-auto rounded-lg bg-white p-6 shadow-lg">
+        <div className="mx-auto rounded-lg bg-white p-4 shadow-lg">
           <Comment blogId={id} />
           <Board blogId={id} />
         </div>

@@ -61,7 +61,7 @@ const MailShare = ({ websiteName, websiteUrl, title, id }: MailShareProps) => {
           >
             {/* モーダルヘッダー */}
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xl font-semibold">メールで共有</h2>
+              <div className="text-xl font-semibold">メールで共有</div>
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-gray-500 transition duration-300 hover:text-black"

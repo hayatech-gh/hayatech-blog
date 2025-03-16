@@ -58,7 +58,9 @@ const Board = ({ blogId }: BoardProps) => {
 
   return (
     <div className="mt-6">
-      <p className="mb-4 text-2xl font-semibold text-gray-900">コメント欄</p>
+      <div className="py-4 text-lg font-semibold text-gray-900 sm:text-xl">
+        コメント欄
+      </div>
       <div className="space-y-4">
         {comments.length > 0 ? (
           comments.map((comment) => (
@@ -66,12 +68,12 @@ const Board = ({ blogId }: BoardProps) => {
               key={comment.id}
               className="rounded-lg border border-slate-400 bg-gray-50 p-4 shadow-sm"
             >
-              <p className="break-words text-lg font-bold text-gray-800">
-                <span className="text-xs text-gray-400">{comment.id}. </span>
+              <p className="break-words font-bold text-gray-800">
+                <span className="text-gray-400">{comment.id}. </span>
                 {comment.name}
               </p>
               <p className="mt-2 text-gray-800">{comment.content}</p>
-              <p className="text-xs text-gray-400">
+              <p className="text-gray-400">
                 {new Date(comment.created_at).toLocaleString()}
               </p>
             </div>

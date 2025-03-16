@@ -11,18 +11,14 @@ const Comment = ({ blogId }: CommentProps) => {
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState("");
 
   const handleSubmit = async () => {
-    // setError("");
     if (!content.trim()) {
       alert('コメントを入力してください。');
-      // setError("コメントを入力してください。");
       return;
     }
 
     setLoading(true);
-    // setError("");
     try {
       const { error } = await supabase.from('comments').insert([
         {
@@ -47,7 +43,6 @@ const Comment = ({ blogId }: CommentProps) => {
       setName('');
       setContent('');
     } catch (error: unknown) {
-      // setError(error.message || 'エラーが発生しました。');
       if (error instanceof Error) {
         alert('エラーが発生しました: ' + error.message);
       } else {
@@ -60,25 +55,26 @@ const Comment = ({ blogId }: CommentProps) => {
 
   return (
     <div>
-      <p className="mb-4 text-2xl font-semibold text-gray-900">コメント投稿</p>
+      <div className="py-4 text-lg font-semibold text-gray-900 sm:text-xl">
+        コメント投稿
+      </div>
       <div className="flex flex-col space-y-4">
         <input
           type="text"
           placeholder="名前 (空欄の場合「No Name」になります)"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full rounded-lg border border-slate-400 p-3 focus:ring-2 focus:ring-blue-500"
+          className="w-full rounded-lg border border-slate-400 p-3 placeholder:text-xs focus:ring-2 focus:ring-blue-500 sm:placeholder:text-sm"
         />
         <textarea
           placeholder="コメントを入力してください"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className="w-full rounded-lg border border-slate-400 p-3 focus:ring-2 focus:ring-blue-500"
+          className="w-full rounded-lg border border-slate-400 p-3 placeholder:text-xs focus:ring-2 focus:ring-blue-500 sm:placeholder:text-sm"
         />
         <button
           onClick={handleSubmit}
           disabled={loading}
-          // disabled={loading || content.length === 0}
           className="w-full rounded-lg bg-blue-500 px-4 py-2 text-white transition hover:cursor-pointer hover:bg-blue-600 disabled:opacity-50"
         >
           {loading ? '送信中...' : '送信'}

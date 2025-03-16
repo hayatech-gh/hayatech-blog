@@ -46,7 +46,7 @@
  **************************************************/
 pre,
 code[class*='language-'] {
-  @apply whitespace-pre break-normal text-left font-mono text-sm leading-relaxed text-gray-300;
+  @apply whitespace-pre break-normal text-left font-mono text-xs leading-relaxed text-gray-300 sm:text-sm;
   tab-size: 4; /* Tailwindがサポートしていないため直接記述 */
 }
 
@@ -67,7 +67,7 @@ code[class*='language-']::selection {
 /* Pre block styles */
 @layer components {
   pre {
-    @apply my-4 overflow-auto rounded-lg bg-gray-800 p-6 shadow-lg;
+    @apply my-4 overflow-auto rounded-lg border border-gray-700 bg-gray-900 p-6 shadow-lg;
   }
 }
 
@@ -75,6 +75,56 @@ code[class*='language-']::selection {
 @layer components {
   :not(pre) > code {
     @apply mx-1 break-words rounded bg-gray-200 px-2 py-1 text-xs font-bold text-red-600 shadow-inner;
+  }
+}
+
+/*********************************************************
+  * Code block syntax highlighting
+  *********************************************************/
+@layer components {
+  /* コメントのスタイル */
+  .hljs-comment {
+    @apply text-green-400;
+  }
+
+  /* キーワード（type, export, function, async など） */
+  .hljs-keyword {
+    @apply text-blue-400;
+  }
+
+  /* クラス名 */
+  .hljs-title.class_ {
+    @apply text-teal-300;
+  }
+
+  /* 関数名 */
+  .hljs-title.function_ {
+    @apply text-yellow-300;
+  }
+
+  /* 変数・属性 */
+  .hljs-attr {
+    @apply text-blue-300;
+  }
+
+  /* 文字列 */
+  .hljs-string {
+    @apply text-red-400;
+  }
+
+  /* 数値 */
+  .hljs-number {
+    @apply text-green-300;
+  }
+
+  /* 真偽値（true, false, undefined, null） */
+  .hljs-literal {
+    @apply text-purple-400;
+  }
+
+  /* 記号（=, {}, [] など） */
+  .hljs-punctuation {
+    @apply text-gray-400;
   }
 }
 
