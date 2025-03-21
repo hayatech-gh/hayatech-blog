@@ -109,11 +109,10 @@ export async function generateMetadata({
   }
   const convertedBlogData = await getHtmlContent(blogData);
 
-  const hayaTechBlog = 'HayaTech-Blog(はやてくぶろぐ)';
+  const hayaTechBlog = 'HayaTech-Blog';
 
   return {
     title: `${convertedBlogData.title} ${hayaTechBlog}`,
-    robots: 'noindex',
   };
 }
 

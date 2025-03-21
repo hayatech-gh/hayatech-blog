@@ -6,10 +6,10 @@
  **************************************************/
 @layer components {
   .md-html a {
-    @apply text-blue-600;
+    @apply leading-relaxed text-blue-600;
   }
   .md-html p {
-    @apply whitespace-pre-wrap;
+    @apply whitespace-pre-wrap leading-relaxed;
   }
   .md-html ul {
     @apply pl-5;
@@ -18,10 +18,10 @@
     @apply pl-5;
   }
   .md-html ul li {
-    @apply list-disc;
+    @apply list-disc leading-relaxed;
   }
   .md-html ol li {
-    @apply list-decimal;
+    @apply list-decimal leading-relaxed;
   }
   .md-html table {
     @apply mx-auto my-6 border-collapse break-normal leading-normal;
@@ -74,7 +74,7 @@ code[class*='language-']::selection {
 /* Inline code styles */
 @layer components {
   :not(pre) > code {
-    @apply mx-1 break-words rounded bg-gray-200 px-2 py-1 text-xs font-bold text-red-600 shadow-inner;
+    @apply mx-1 break-words rounded bg-gray-200 px-2 py-1 text-xs font-semibold text-red-600 shadow-inner;
   }
 }
 

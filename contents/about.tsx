@@ -128,7 +128,7 @@ export const about = {
       heading: 'その他',
       contents: [
         'TOEIC® Listening & Reading 735点',
-        'PROGOS English Speaking CEFR (CEFR-J) Levels B1',
+        'PROGOS English Speaking CEFR Levels B1',
       ],
     },
   },
