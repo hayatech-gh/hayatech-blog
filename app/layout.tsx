@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: hayaTechBlog,
   description:
     'HayaTech-Blogでは、エンジニアのための情報共有コミュニティであるZENNに投稿している記事を取得して、エンジニア向けのブログとして公開しています。',
+  verification: { google: 'cNMPZcujlVSd4RRmrb1ARAxCMpTVxc7-DepsQRTKztY' },
   keywords:
     'Next.js, React, TypeScript, JavaScript, Python, PHP, SQL, HTML, CSS, Web Development, Engineer, Blog, Idea, Tech',
   authors: [{ name: 'Hayate', url: 'https://hayatech-blog.vercel.app' }],
@@ -53,11 +54,10 @@ export const metadata: Metadata = {
 /**************************************************
  * Layout
  **************************************************/
-import GoogleAnalytics from '@/components/common/layout/googleAnalytics';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
-import '@/styles/prism-custom.css';
+import '@/styles/md-html.css';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -69,7 +69,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body>
         {children}
-        <GoogleAnalytics />
         <Analytics />
         <SpeedInsights />
       </body>

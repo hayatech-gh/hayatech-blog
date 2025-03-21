@@ -71,7 +71,7 @@ export function getMdData(articles: Article[], id: string): Article {
 }
 
 /*
-[Remarkプラグイン]
+[プラグイン]
 remarkParse：Markdownをmdast（Markdown 抽象構文木）に変換
 remarkMath：数式記法（LaTeX）を解析
 remarkDirective：::: を使ったカスタムディレクティブを解析
