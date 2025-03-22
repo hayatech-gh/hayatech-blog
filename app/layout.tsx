@@ -19,6 +19,12 @@ export const metadata: Metadata = {
       { rel: 'apple-touch-icon', url: '/images/HayaTech.png' },
       { rel: 'android-chrome', url: '/images/HayaTech.png' },
     ],
+    apple: [
+      {
+        rel: 'apple-touch-icon',
+        url: '/images/HayaTech.png',
+      },
+    ],
   },
   metadataBase: new URL('https://hayatech-blog.vercel.app'),
   alternates: {
