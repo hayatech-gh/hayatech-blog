@@ -13,8 +13,8 @@ const Layout = ({ children }: LayoutProps) => {
     <>
       <div className="mx-auto bg-slate-100">
         <div className="mx-auto grid grid-cols-1 gap-2 p-2 xl:grid-cols-4">
-          <main className="col-span-1 rounded-xl bg-slate-100 xl:col-span-3">
-            <div className="mx-auto my-10 max-w-lg">
+          <div className="col-span-1 rounded-xl bg-slate-100 xl:col-span-3">
+            <header className="mx-auto my-10 max-w-lg">
               <Link href="/">
                 <div className="group flex items-center justify-center gap-2">
                   <div>
@@ -39,14 +39,10 @@ const Layout = ({ children }: LayoutProps) => {
               <p className="mt-4 text-center font-semibold md:text-lg">
                 {blog.titleSub}
               </p>
-            </div>
+            </header>
 
-            {/* コンテンツ */}
-            {children}
-
-            {/* フッター */}
-            {/* <Footer /> */}
-          </main>
+            <main>{children}</main>
+          </div>
           <aside className="xl:col-span-1">
             <About />
           </aside>
