@@ -1,5 +1,5 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://your-project.vercel.app',
+  siteUrl: 'https://hayatech-blog.vercel.app/',
   generateRobotsTxt: true,
 };
