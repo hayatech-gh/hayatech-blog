@@ -7,6 +7,7 @@ import { SiPhp } from 'react-icons/si';
 import { SiLaravel } from 'react-icons/si';
 import { SiPython } from 'react-icons/si';
 import { TbSql } from 'react-icons/tb';
+import { PiMicrosoftExcelLogoLight } from 'react-icons/pi';
 import { BiSolidFileHtml } from 'react-icons/bi';
 import { BiSolidFileCss } from 'react-icons/bi';
 
@@ -20,7 +21,9 @@ export const about = {
       <span className="mx-1 text-blue-400">
         <a href="https://zenn.dev/hayatech">ZENN</a>
       </span>
-      に投稿している記事を取得して、エンジニア向けのブログとして公開しています。仕事やプライベートでTypeScriptやNext.js、TailwindCSSなどを習得しましたので、それらを活用した個人開発の一環として、ブログサイトを作りました。これからもブログ記事の追加やサイトのアップデートを継続的に行っていく予定です。どうぞご愛読ください！
+      に投稿している記事を取得して、エンジニア向けのブログとして公開しています。仕事やプライベートで
+      Next.js や TypeScript、TailwindCSS
+      などを習得した知見を活かしたいと思いましたので、それらを活用した個人開発の一環として、ブログサイトを作りました。これからもブログ記事の追加やサイトのアップデートを継続的に行っていく予定です。どうぞご愛読ください！
     </>
   ),
   headingUpdate: '今後のアップデート',
@@ -34,7 +37,7 @@ export const about = {
   headingCareer: '経歴',
   careers: [
     '青山学院大学 社会情報学部 社会情報学科 学士卒',
-    'Webクリエイター＆Webエンジニア 3年',
+    'Webクリエイター＆Webエンジニア 3年〜5年',
   ],
   headingDevLang: '使用言語',
   skills: [
@@ -84,6 +87,12 @@ export const about = {
       <span className="flex items-center justify-center">
         <SiPython className="mr-1" />
         <span>Python</span>
+      </span>
+    </>,
+    <>
+      <span className="flex items-center justify-center">
+        <PiMicrosoftExcelLogoLight className="mr-1" />
+        <span>VBA</span>
       </span>
     </>,
     <>

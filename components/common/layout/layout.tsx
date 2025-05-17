@@ -1,8 +1,8 @@
 import Footer from './footer';
 import About from './about';
-import { blog } from '@/contents/blog';
 import Link from 'next/link';
 import Image from 'next/image';
+import { common } from '@/contents/common';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -28,7 +28,7 @@ const Layout = ({ children }: LayoutProps) => {
                   </div>
                   <div>
                     <h1 className="text-2xl tracking-widest transition-all duration-300 group-hover:opacity-50 sm:text-3xl md:text-4xl">
-                      {blog.title}
+                      {common.title}
                     </h1>
                   </div>
                 </div>
@@ -37,7 +37,7 @@ const Layout = ({ children }: LayoutProps) => {
               <div className="w-full rounded-lg border-t-4 border-slate-300"></div>
 
               <p className="mt-4 text-center font-semibold md:text-lg">
-                {blog.titleSub}
+                {common.titleSub}
               </p>
             </header>
 
