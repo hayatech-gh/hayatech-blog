@@ -37,7 +37,7 @@ export const about = {
   headingCareer: '経歴',
   careers: [
     '青山学院大学 社会情報学部 社会情報学科 学士卒',
-    'Webクリエイター＆Webエンジニア 3年〜5年',
+    'Webクリエイター＆Webエンジニア 3~5年',
   ],
   headingDevLang: '使用言語',
   skills: [
