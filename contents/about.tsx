@@ -19,7 +19,9 @@ export const about = {
     <>
       HayaTech-Blogでは、エンジニアのための情報共有コミュニティである
       <span className="mx-1 text-blue-400">
-        <a href="https://zenn.dev/hayatech">ZENN</a>
+        <a href="https://zenn.dev/hayatech" target="_blank">
+          ZENN
+        </a>
       </span>
       に投稿している記事を取得して、エンジニア向けのブログとして公開しています。仕事やプライベートで
       Next.js や TypeScript、TailwindCSS

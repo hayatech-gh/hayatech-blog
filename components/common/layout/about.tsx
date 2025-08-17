@@ -32,6 +32,7 @@ export default function About() {
             </span>
             <a
               href={about.githubURL}
+              target="_blank"
               className="flex items-center gap-1 text-blue-400"
             >
               <span>
