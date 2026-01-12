@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Hayate', url: 'https://hayatech-blog.vercel.app' }],
   icons: {
     icon: [
-      { rel: 'icon', url: '/favicon.png' },
+      { rel: 'icon', url: '/images/favicon.png' },
       { rel: 'apple-touch-icon', url: '/images/HayaTech.png' },
       { rel: 'android-chrome', url: '/images/HayaTech.png' },
     ],
