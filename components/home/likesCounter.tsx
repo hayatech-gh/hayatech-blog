@@ -17,14 +17,14 @@ const LikesCounter = ({ blogId }: LikesCounterProps) => {
         .from('likes')
         .select('count')
         .eq('blog_id', blogId)
-        .single();
+        .maybeSingle();
 
       if (error) {
         console.error('Error fetching likes:', error);
         return;
       }
 
-      setLikes(data?.count || 0);
+      setLikes(data?.count ?? 0);
     };
 
     fetchLikes();

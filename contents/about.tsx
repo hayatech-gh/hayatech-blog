@@ -35,11 +35,11 @@ export const about = {
   githubID: 'hayatech-gh',
   githubURL: 'https://github.com/hayatech-gh',
   descriptionAuthor:
-    '「HayaTech」と申します。自分の名前とテクノロジーを合わせたニックネームです。大学卒業後、仕事でWeb制作を経験し、今現在はWeb系の開発に携わっています。',
+    'はじめまして、HayaTechです。大学卒業後、新卒でWeb制作の現場に入り、現在はWeb系の開発を中心に取り組んでいます。エンジニア歴は約3年半。このブログでは、日々の開発で学んだことや気づきをアウトプットしながら、技術力の向上を目指していきます。',
   headingCareer: '経歴',
   careers: [
     '青山学院大学 社会情報学部 社会情報学科 学士卒',
-    'Webクリエイター＆Webエンジニア 3~5年',
+    'Webクリエイター＆Webエンジニア 3.5年',
   ],
   headingDevLang: '使用言語',
   skills: [
@@ -122,6 +122,9 @@ export const about = {
     it: {
       heading: 'IT',
       contents: [
+        'Python3エンジニア認定実践試験 ※2026年内取得予定',
+        '応用情報技術者試験 ※2026年4月取得予定',
+        'AWS SAA-C03 ※2026年2月取得予定',
         'Python3エンジニア認定基礎試験',
         'LPIC-1（Exam 101, Exam 102）',
         'WEBクリエイター能力認定試験 エキスパート',

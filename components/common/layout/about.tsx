@@ -47,7 +47,7 @@ export default function About() {
         </p>
       </section>
       {/* 経歴 */}
-      <section className="mt-4">
+      {/* <section className="mt-4">
         <h3 className="mb-2 border-b-4 border-slate-300 pb-2 tracking-wider text-gray-900">
           {about.headingCareer}
         </h3>
@@ -61,7 +61,7 @@ export default function About() {
             </li>
           ))}
         </ul>
-      </section>
+      </section> */}
       {/* 使用言語 */}
       <section className="mt-4">
         <h3 className="mb-2 border-b-4 border-slate-300 pb-2 tracking-wider text-gray-900">
